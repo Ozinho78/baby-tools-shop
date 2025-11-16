@@ -1,14 +1,14 @@
 # Baby Tools Shop
 
 ## Table of Contents
-1. [Project Description](#project-description)
-2. [Quickstart](#quickstart)
-3. [Local Development Usage](#local-development-usage)
-4. [Containerized Usage (Docker)](#containerized-usage-docker)
-5. [Project Structure](#project-structure)
-6. [Demo Data Script](#demo-data-script)
-7. [Notes on Code Adjustments](#notes-on-code-adjustments)
-8. [License](#license)
+1. [Project Description](#1-project-description)
+2. [Quickstart](#2-quickstart)
+3. [Local Development Usage](#3-local-development-usage)
+4. [Containerized Usage (Docker)](#4-containerized-usage-docker)
+5. [Project Structure](#5-project-structure)
+6. [Demo Data Script](#6-demo-data-script)
+7. [Notes on Code Adjustments](#7-notes-on-code-adjustments)
+8. [License](#8-license)
 
 ---
 
