@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   web:
     build: .
@@ -9,13 +7,12 @@ services:
       - "8025:8000"
     restart: unless-stopped
     env_file:
-      - .env
+      - babyshop_app/.env
     volumes:
       - media:/app/babyshop_app/media
       - db:/app/babyshop_app/db
     command: >
       sh -c "
-        cd babyshop_app &&
         python manage.py migrate &&
         python manage.py collectstatic --noinput &&
         python manage.py runserver 0.0.0.0:8000
