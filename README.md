@@ -100,7 +100,7 @@ The app will be available at:
 
 ## ⚠️ Python Compatibility Note (Important)
 
-This project was originally developed with Python < 3.9.
+This project was originally developed with Python < 3.10.
 If you use Python 3.12+, some imports in products/models.py must be removed or commented out:
 ```bash
 # from distutils.command.upload import upload
@@ -225,8 +225,138 @@ docker compose build --no-cache
 docker compose up -d
 ```
 
+### 4.8 Optional: Generate demo data inside the container
+```bash
+docker compose exec web python create_demo_data.py
+```
 
+---
 
+## 5. Project Structure
 
+The repository contains the Django application, Docker setup, demo data script, and documentation.  
+Below is the full directory structure:
 
+```markdown
+baby-tools-shop/
+│ .gitignore
+│ docker-compose.yml
+│ dockerfile
+│ LICENSE
+│ README.md
+│
+├───babyshop_app
+│ │ create_demo_data.py
+│ │ manage.py
+│ │ requirements.txt
+│ │
+│ ├───babyshop
+│ │ asgi.py
+│ │ settings.py
+│ │ urls.py
+│ │ wsgi.py
+│ │ init.py
+│ │
+│ ├───products
+│ │ │ admin.py
+│ │ │ apps.py
+│ │ │ models.py
+│ │ │ tests.py
+│ │ │ urls.py
+│ │ │ views.py
+│ │ │ init.py
+│ │ │
+│ │ └───migrations
+│ │ 0001_initial.py
+│ │ 0002_product_price.py
+│ │ 0003_alter_product_name.py
+│ │ 0004_category_product_category.py
+│ │ 0005_rename_describtion_product_description.py
+│ │ init.py
+│ │
+│ ├───templates
+│ │ │ login.html
+│ │ │ product.html
+│ │ │ products.html
+│ │ │ register.html
+│ │ │
+│ │ └───partoftemp
+│ │ footer.html
+│ │ _dashboard.html
+│ │
+│ └───users
+│ │ admin.py
+│ │ apps.py
+│ │ forms.py
+│ │ models.py
+│ │ tests.py
+│ │ urls.py
+│ │ views.py
+│ │ init.py
+│ │
+│ └───migrations
+│ init.py
+│
+└───project_images
+capture_20220323080815407.jpg
+capture_20220323080840305.jpg
+capture_20220323080934541.jpg
+capture_20220323080953570.jpg
+capture_20220323081016022.jpg
+capture_20220323081044867.jpg
+```
 
+---
+
+## 6. Demo Data Script
+
+The `create_demo_data.py` script provides a simple way to populate the database with initial content.
+
+### Features
+- Automatic Django setup via `django.setup()`
+- Creation of multiple **categories**
+- Creation of **1–3 products per category**
+- Automatic **slug generation**
+- Randomized **pricing**
+- Works in both local and Dockerized environments
+
+### Running the Script (Local)
+```bash
+cd babyshop_app
+.\venv\Scripts\activate
+python create_demo_data.py
+```
+
+### Running the Script (Inside Docker)
+```bash
+docker compose exec web python create_demo_data.py
+```
+
+---
+
+## 7. Notes on Code Adjustments
+
+The file `products/models.py` originally contained several outdated imports that referenced deprecated Python modules (e.g., `distutils`).  
+These modules are no longer available in modern Python versions (Python 3.10+).
+
+The following lines were commented out to restore compatibility with **Python 3.12+**:
+
+```python
+# from distutils.command.upload import upload
+# from email.policy import default
+# from enum import unique
+# from pyexpat import model
+# from unicodedata import name
+```
+
+These imports were not used anywhere in the codebase and removing them does not affect application behavior.
+
+This adjustment ensures full compatibility in local development as well as within the Docker container environment.
+
+---
+
+## 8. License
+
+This project is intended for educational use as part of the **Baby Tools Shop** assignment.  
+It is based on a provided template and extended with containerization features and documentation.  
+All rights remain with the original authors of the template project.
