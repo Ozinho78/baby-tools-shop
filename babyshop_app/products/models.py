@@ -1,9 +1,9 @@
 from datetime import date
-from distutils.command.upload import upload
-from email.policy import default
-from enum import unique
-from pyexpat import model
-from unicodedata import name
+# from distutils.command.upload import upload
+# from email.policy import default
+# from enum import unique
+# from pyexpat import model
+# from unicodedata import name
 from django.db import models
 
 class Category(models.Model):

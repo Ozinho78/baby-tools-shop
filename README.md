@@ -73,22 +73,27 @@ python -m venv venv
 pip install -r requirements.txt
 ```
 
-## 2.4 Apply Database Migrations
+## 2.4 Create .env File
+```bash
+cp .env.example .env
+```
+
+## 2.5 Apply Database Migrations
 ```bash
 python manage.py migrate
 ```
 
-## 2.5 Create Superuser
+## 2.6 Create Superuser
 ```bash
 python manage.py createsuperuser
 ```
 
-## 2.6 Loading Demo Data (without images)
+## 2.7 Loading Demo Data (without images)
 ```bash
 python create_demo_data.py
 ```
 
-## 2.7 Start Development Server
+## 2.8 Start Development Server
 ```bash
 python manage.py runserver
 ```
