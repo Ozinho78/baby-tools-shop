@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    container_name: babyshop
+    ports:
+      - "8025:8000"   # external:internal
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - media:/app/media
+      - static:/app/static
+      - db:/app/db
+    command: >
+      sh -c "
+        python manage.py migrate &&
+        python manage.py collectstatic --noinput &&
+        python manage.py runserver 0.0.0.0:8000
+      "
+
+volumes:
+  media:
+  static:
+  db:
