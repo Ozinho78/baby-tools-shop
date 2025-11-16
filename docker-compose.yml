@@ -12,7 +12,6 @@ services:
       - .env
     volumes:
       - media:/app/babyshop_app/media
-      - static:/app/babyshop_app/staticfiles
       - db:/app/babyshop_app/db
     command: >
       sh -c "
