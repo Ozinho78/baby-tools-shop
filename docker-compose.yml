@@ -4,6 +4,7 @@ services:
   web:
     build: .
     container_name: babyshop
+    working_dir: /app/babyshop_app
     ports:
       - "8025:8000"
     restart: unless-stopped
@@ -11,10 +12,11 @@ services:
       - .env
     volumes:
       - media:/app/babyshop_app/media
-      - static:/app/babyshop_app/static
+      - static:/app/babyshop_app/staticfiles
       - db:/app/babyshop_app/db
     command: >
       sh -c "
+        cd babyshop_app &&
         python manage.py migrate &&
         python manage.py collectstatic --noinput &&
         python manage.py runserver 0.0.0.0:8000
