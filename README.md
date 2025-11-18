@@ -50,13 +50,8 @@ Before starting, ensure the following tools are installed:
 Clone the repository and switch into the project directory:
 
 ```bash
-git clone https://github.com/Ozinho78/baby-tools-shop.git
+git clone git@github.com:Ozinho78/baby-tools-shop.git
 cd baby-tools-shop
-```
-
-## ⚠️ Switch to the feature branch (contains the latest containerization work)
-```bash
-git switch feature/containerizing
 ```
 
 ## 2.2 Setup Virtual Environment
@@ -240,75 +235,25 @@ docker compose exec web python create_demo_data.py
 ## 5. Project Structure
 
 The repository contains the Django application, Docker setup, demo data script, and documentation.  
-Below is the full directory structure:
+Only relevant files and folders are listed below.
 
 ```markdown
 baby-tools-shop/
-│ .gitignore
-│ docker-compose.yml
-│ dockerfile
-│ LICENSE
-│ README.md
 │
-├───babyshop_app
-│ │ create_demo_data.py
-│ │ manage.py
-│ │ requirements.txt
-│ │
-│ ├───babyshop
-│ │ asgi.py
-│ │ settings.py
-│ │ urls.py
-│ │ wsgi.py
-│ │ init.py
-│ │
-│ ├───products
-│ │ │ admin.py
-│ │ │ apps.py
-│ │ │ models.py
-│ │ │ tests.py
-│ │ │ urls.py
-│ │ │ views.py
-│ │ │ init.py
-│ │ │
-│ │ └───migrations
-│ │ 0001_initial.py
-│ │ 0002_product_price.py
-│ │ 0003_alter_product_name.py
-│ │ 0004_category_product_category.py
-│ │ 0005_rename_describtion_product_description.py
-│ │ init.py
-│ │
-│ ├───templates
-│ │ │ login.html
-│ │ │ product.html
-│ │ │ products.html
-│ │ │ register.html
-│ │ │
-│ │ └───partoftemp
-│ │ footer.html
-│ │ _dashboard.html
-│ │
-│ └───users
-│ │ admin.py
-│ │ apps.py
-│ │ forms.py
-│ │ models.py
-│ │ tests.py
-│ │ urls.py
-│ │ views.py
-│ │ init.py
-│ │
-│ └───migrations
-│ init.py
+├── docker-compose.yml     # Defines the Django service, volumes, ports, restart policy
+├── dockerfile             # Builds the Django application image (Python 3.13 slim)
+├── .env                   # Environment variables for Django (DEBUG, SECRET_KEY, HOSTS)
+├── README.md              # Documentation, Quickstart, Docker instructions
 │
-└───project_images
-capture_20220323080815407.jpg
-capture_20220323080840305.jpg
-capture_20220323080934541.jpg
-capture_20220323080953570.jpg
-capture_20220323081016022.jpg
-capture_20220323081044867.jpg
+├── babyshop_app/
+│   ├── manage.py          # Django management entry point (used by Docker CMD)
+│   ├── requirements.txt   # Python package list installed inside the container
+│   │
+│   ├── babyshop/settings.py   # Central Django configuration (STATIC_ROOT, DEBUG via .env)
+│   │
+│   └── create_demo_data.py    # Optional script to preload demo categories & products
+│
+└── project_images/        # Images used in the README only (no runtime relevance)
 ```
 
 ---
