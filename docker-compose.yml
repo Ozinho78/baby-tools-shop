@@ -1,0 +1,18 @@
+services:
+  web:
+    build: .
+    container_name: babyshop
+    working_dir: /app/babyshop_app
+    ports:
+      - "8025:8000"
+    restart: unless-stopped
+    env_file:
+      - babyshop_app/.env
+    volumes:
+      - media:/app/babyshop_app/media
+      - db:/app/babyshop_app/db
+
+volumes:
+  media:
+  static:
+  db:
