@@ -54,21 +54,44 @@ git clone git@github.com:Ozinho78/baby-tools-shop.git
 cd baby-tools-shop
 ```
 
-## 2.2 Setup Virtual Environment
+## 2.2 Switch to the feature branch (contains the latest containerization work)
+```bash
+git switch feature/containerizing
+```
+
+## 2.3 Setup Virtual Environment
 
 The virtual environment must be created inside the babyshop_app folder:
+
+### Windows (PowerShell)
 ```bash
 cd babyshop_app
 python -m venv venv
 .\venv\Scripts\activate
 ```
 
-## 2.3 Install Dependencies
+### Linux / macOS (Bash / Zsh)
+```bash
+cd babyshop_app
+python -m venv venv
+source venv/bin/activate
+```
+
+## 2.4 Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-## 2.4 Create .env File
+## 2.5 Create .env File
+
+If an example file exists:
+
+### Windows
+```bash
+copy .env.example .env
+```
+
+### Linux / macOS
 ```bash
 cp .env.example .env
 ```
